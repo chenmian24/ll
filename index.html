@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生周报生成器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>学生周报生成器</h1>
+      <p class="subtitle">根据本周表现，一键生成规范周报</p>
+    </header>
+
+    <main class="app-main">
+      <section class="card">
+        <h2 class="card-title">填写本周信息</h2>
+        <form class="form" id="report-form">
+          <div class="form-group">
+            <label for="student-name">学生姓名</label>
+            <input type="text" id="student-name" name="student-name" placeholder="例如：张三" required>
+          </div>
+
+          <div class="form-group">
+            <label for="attendance-days">
+              本周到校天数
+              <span class="label-hint">（0 - 7 天）</span>
+            </label>
+            <input type="number" id="attendance-days" name="attendance-days" min="0" max="7" value="5" required>
+          </div>
+
+          <div class="form-group">
+            <label for="homework-count">
+              本周完成作业次数
+              <span class="label-hint">（可以按科目或作业本次数统计）</span>
+            </label>
+            <input type="number" id="homework-count" name="homework-count" min="0" value="10" required>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary" id="generate-btn">生成周报</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="card-header-row">
+          <h2 class="card-title">本周周报内容</h2>
+          <button class="btn ghost small" type="button" id="copy-btn" disabled>一键复制</button>
+        </div>
+        <p class="hint-text">点击上方“生成周报”按钮后，将在下方自动生成一段完整的周报文字。</p>
+        <div class="output-wrapper">
+          <textarea id="report-output" readonly placeholder="周报内容将显示在这里……"></textarea>
+        </div>
+        <p class="status-text" id="status-text" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>适用于教师、家长快速整理学生一周表现情况。</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
